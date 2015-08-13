@@ -97,12 +97,18 @@ public class Shipping extends Utilities {
     	shippingAddress2_Field.sendKeys(address2);
     }        
     
-    @FindBy(xpath = "(//div[@class='selectric'])[2]")
+    @FindBy(xpath = "(//div[@class='selectric'])[3]")
     public WebElement shippingState_DD;
-	public void setShippingState(String state){
+	/*
+    public void setShippingState(String state){
 		shippingState_DD.sendKeys(state);
 		   //select.deselectAll();
-		}
+	}
+	*/
+	public void setShippingState(String state){
+		Select dropdown = new Select(driver.findElement(By.id("(//div[@class='selectric'])[3]")));
+		dropdown.selectByValue(state);
+	}
     
     @FindBy(xpath = "//input[@id='dwfrm_singleshipping_shippingAddress_addressFields_city']")
     public WebElement shippingCity_Field;

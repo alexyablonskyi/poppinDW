@@ -42,6 +42,7 @@ public class End_To_end extends Base {
 		@Test(enabled= true, priority=0, groups = {"Checkout"},
 				description= "Verify user is able to do a basic checkout [Using Visa Card]")
 		public void checkoutVisa() throws Exception {
+			Thread.sleep(4000);
 			shipping.setShippingAddress(Values.NAME_FIRST, Values.NAME_LAST, Values.ID_EMAIL_QA_TEST, Values.PHONE_NUM, Values.ADDRESS, Values.ADDRESS2, "New York", Values.LOC_NEWYORK, Values.ZIP_CODE_NY);
 			shipping.continueToShippingMethod_Button.click();
 			shipping.setShippingMethod(ShippingNames.NEXT_BUSINESS_DAY);
