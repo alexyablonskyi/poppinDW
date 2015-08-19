@@ -97,19 +97,46 @@ public class Shipping extends Utilities {
     	shippingAddress2_Field.sendKeys(address2);
     }        
     
-    @FindBy(xpath = "(//div[@class='selectric'])[3]")
+    @FindBy(xpath = "(.//*[@class='button icon-pop-arrow-down'])[3]")
     public WebElement shippingState_DD;
+    
 	/*
     public void setShippingState(String state){
 		shippingState_DD.sendKeys(state);
 		   //select.deselectAll();
 	}
 	*/
+    /*
 	public void setShippingState(String state){
-		Select dropdown = new Select(driver.findElement(By.id("(//div[@class='selectric'])[3]")));
+		Select dropdown = new Select(driver.findElement(By.id("(.//div[@class='selectric'])[3]")));
 		dropdown.selectByValue(state);
 	}
+    */
+  
     
+    public void selectStateForShipping(String state){
+    	driver.findElement(By.xpath(".//li[contains(text(), '"+state+"')]")).click();
+    }
+    
+    
+	public void setShippingState(String state) throws InterruptedException {
+		shippingState_DD.click();
+		Thread.sleep(500);
+		selectStateForShipping(state);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
     @FindBy(xpath = "//input[@id='dwfrm_singleshipping_shippingAddress_addressFields_city']")
     public WebElement shippingCity_Field;
     public void setShippingCity(String city){
